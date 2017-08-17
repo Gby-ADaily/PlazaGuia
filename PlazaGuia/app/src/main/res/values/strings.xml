@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PlazaGuia</string>
+    <integer name="radious_botton">10</integer>
+</resources>
