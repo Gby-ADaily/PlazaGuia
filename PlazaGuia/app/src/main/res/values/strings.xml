@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">PlazaGuia</string>
     <integer name="radious_botton">10</integer>
+
+    <string name="spn_title">Opciones</string>
+    <string-array name="opciones">
+        <item>Opciones</item>
+        <item>Python</item>
+        <item>PHP</item>
+        <item>Perl</item>
+        <item>Tcl</item>
+        <item>Ruby</item>
+    </string-array>
+
 </resources>

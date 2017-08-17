@@ -59,7 +59,6 @@ public class SplashScreen extends AppCompatActivity {
 
         sqlControlador.insertarTienda("Platanitos");
         sqlControlador.insertarTienda("Moixx");
-        //sqlControlador.insertarTienda("Tottus");
         sqlControlador.insertarTienda("Norky");
         sqlControlador.insertarTienda("Movistar");
 

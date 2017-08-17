@@ -7,11 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public Button btnTiendas,btnEvacuacion,btnSeguridad,btnServicio,btnEmergencia;
+    public Spinner spnOpciones;
+    List<String> opcionesSpinner = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
         btnEvacuacion = (Button) findViewById(R.id.btnEvacuacion);
         btnSeguridad = (Button) findViewById(R.id.btnSeguridad);
         btnServicio = (Button) findViewById(R.id.btnServicio);
-
         btnEmergencia=(Button) findViewById(R.id.btnEmergencia);
+        spnOpciones = (Spinner) findViewById(R.id.spnOpciones);
+
+        // SPINNER
+        insertarSpinner();
+        spnOpciones.setOnItemSelectedListener(this);
 
         // acciones de los botones
         btnTiendas.setOnClickListener(new View.OnClickListener(){
@@ -87,6 +100,38 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void insertarSpinner(){
+        opcionesSpinner.add("Opciones");
+        opcionesSpinner.add("Ajustes");
+        opcionesSpinner.add("Cerrar Session");
+
+        ArrayAdapter reportAdapter =  new ArrayAdapter(this,
+                android.R.layout.simple_spinner_dropdown_item,  opcionesSpinner);
+        spnOpciones.setAdapter(reportAdapter);
+        spnOpciones.setSelection(0);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int pos, long id)
+    {
+        String item = parent.getItemAtPosition(pos).toString();
+        Toast.makeText(MainActivity.this, item +" "+pos, Toast.LENGTH_SHORT).show();
+        /*if(pos == 2){
+            opcionesSpinner.clear();
+            ArrayAdapter reportAdapter =  new ArrayAdapter(this,
+                    android.R.layout.simple_spinner_dropdown_item,  opcionesSpinner);
+            spnOpciones.setAdapter(reportAdapter);
+            spnOpciones.setSelection(0);
+        }*/
+        //tv.setText(item);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0)
+    {
+        Toast.makeText(MainActivity.this, " - ", Toast.LENGTH_SHORT).show();
+        //tv.setText("");
+    }
 
     @Override
     public void onBackPressed() {
